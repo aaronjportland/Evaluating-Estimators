@@ -104,7 +104,7 @@ observations are found in each database (RAIS and SSE).
 	drop if business_sector == .
 	rename			business_activity_code		CNAE
 	label variable	CNAE						"Business activity code"
-	save 			"Experiment\Data\business_code_sector.dta", replace
+	save 			"Experiment/Data/business_code_sector.dta", replace
 
 */
 	
@@ -136,7 +136,7 @@ observations are found in each database (RAIS and SSE).
 					
 	order			zipcode business_activity_code
 					
-	save 			"Experiment\Data\competition_full_zipcode.dta", replace
+	save 			"Experiment/Data/competition_full_zipcode.dta", replace
 
 *-------------------------------------------------------------------------------
 *** second measure of competition -----------------------------------------------
@@ -155,7 +155,7 @@ observations are found in each database (RAIS and SSE).
 * merging with the first measure of competition
 
 	merge 1:m 		broad_zipcode business_activity_code ///
-					using "Experiment\Data\competition_full_zipcode.dta"
+					using "Experiment/Data/competition_full_zipcode.dta"
 
 * organizing database	
 				

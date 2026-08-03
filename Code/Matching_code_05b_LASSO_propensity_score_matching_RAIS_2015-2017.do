@@ -12,7 +12,7 @@
 	
 * setting the work directory
 
-	cd "C:/Users/gabia/OneDrive/Meus Documentos/Mestrado EESP/2023/RA Banco Mundial/Evaluating estimators"
+	cd "/Users/aaronjoseph/Downloads/Capstone/Felipe"
 	
 * importing the sample
 

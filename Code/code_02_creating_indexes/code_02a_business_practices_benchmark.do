@@ -14,7 +14,7 @@
 	
 * importing Sebrae's cleaned database of SSE 2015
 
-	use "Experiment\Output\output_code_01c_sse_2015.dta", clear
+	use "Experiment/Output/output_code_01c_sse_2015.dta", clear
 
 	/* 	Create business practices benchmark values.  Reference groups: sebrae's 
 	strategic groups and local competitors	
@@ -46,12 +46,12 @@ wouldn't be lost in the merge.
 
 */
 
-	merge 1:1 firm_id using "Experiment\Output\output_code_01d_sse_2016.dta", gen(merge15_16)
+	merge 1:1 firm_id using "Experiment/Output/output_code_01d_sse_2016.dta", gen(merge15_16)
 
 * from the universe of 18,609 + 12,369 - 3,129 = 27,849 unique firms interviewed in 2015 and
 *		2016, only 3,129 were interviewed in both editions (11%)
 
-	merge 1:1 firm_id using "Experiment\Output\output_code_01f_sse_2017.dta", gen(merge15_16_17)
+	merge 1:1 firm_id using "Experiment/Output/output_code_01f_sse_2017.dta", gen(merge15_16_17)
 
 * identifying the results from the merge
 
@@ -265,7 +265,7 @@ practices scores from the last interview (not the first).
 	
 * saving the output
 		
-	save "Experiment\Output\output_code_02a_business_practices_benchmark1.dta", replace
+	save "Experiment/Output/output_code_02a_business_practices_benchmark1.dta", replace
 	
 *-------------------------------------------------------------------------------
 *** benchmarking within sector only --------------------------------------------
@@ -312,7 +312,7 @@ practices scores from the last interview (not the first).
 	
 * saving the output
 
-	save "Experiment\Output\output_code_02a_business_practices_benchmark2.dta", replace
+	save "Experiment/Output/output_code_02a_business_practices_benchmark2.dta", replace
 
 *-------------------------------------------------------------------------------
 *** benchmarking with all firms (no region or sector cluster) ------------------
@@ -364,7 +364,7 @@ create the benchmark value for all firms.
 
 	g sebrae_strategic_business_sector = 11
 
-	append using "Experiment\Output\output_code_02a_business_practices_benchmark2.dta"
+	append using "Experiment/Output/output_code_02a_business_practices_benchmark2.dta"
 
 	label values sebrae_strategic_business_sector sebrae_strategic_business_sector
 
@@ -376,14 +376,14 @@ create the benchmark value for all firms.
 
 * saving the output
 
-	save "Experiment\Output\output_code_02a_business_practices_benchmark2.dta", replace
+	save "Experiment/Output/output_code_02a_business_practices_benchmark2.dta", replace
 
 /* replacing the within region and sector benchmark with the new comparison values 
 for firms in "other" (firms classified as "other" will be compared to all firms 
 in the region)
 */
 
-	use "Experiment\Output\output_code_02a_business_practices_benchmark1.dta", clear
+	use "Experiment/Output/output_code_02a_business_practices_benchmark1.dta", clear
 
 	collapse  	(sum) business_practices_level_* business_practices_sum_20_more ///
 				business_practices_sum_21_more business_practices_sum_22_more ///
@@ -423,7 +423,7 @@ in the region)
 
 	g sebrae_strategic_business_sector = 11
 
-	append using "Experiment\Output\output_code_02a_business_practices_benchmark1.dta"
+	append using "Experiment/Output/output_code_02a_business_practices_benchmark1.dta"
 
 	label values sebrae_strategic_business_sector sebrae_strategic_business_sector
 

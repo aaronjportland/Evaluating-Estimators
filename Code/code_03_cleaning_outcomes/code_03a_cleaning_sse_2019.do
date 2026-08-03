@@ -15,7 +15,7 @@
 * importing Sebrae's database of people interviewed in the 2019 edition of the 
 * 		SSE program
 
-	import excel "Experiment\Data\endline_sse_2019.xlsx", firstrow clear
+	import excel "Experiment/Data/endline_sse_2019.xlsx", firstrow clear
 
 *===============================================================================
 *	Part 1: Creating and formatting additional variables

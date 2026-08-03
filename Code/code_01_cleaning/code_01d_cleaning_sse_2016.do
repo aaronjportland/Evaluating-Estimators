@@ -14,6 +14,7 @@
 
 * setting a temporary work directory for unicode translate
 
+	clear all
 	cd "/Users/aaronjoseph/Downloads/Capstone/Felipe/Experiment/Data"
 	
 * choosing the encoding for translation of the database
