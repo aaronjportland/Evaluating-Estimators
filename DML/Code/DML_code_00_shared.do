@@ -201,15 +201,12 @@ program define write_results_csv
         local tcoef "" 
         local tcoef_full "" 
         foreach cand of global KNOWN_TREATVARS { 
-            * Exact match first (single-equation models) 
             local pos : list posof "`cand'" in colnames 
             if `pos' > 0 { 
                 local tcoef "`cand'" 
                 local tcoef_full "`cand'" 
                 continue, break 
             } 
-            * Multi-equation models prefix columns as "eqname:varname" 
-            * (e.g. "y1:treatment_y") -- match on the suffix after ":". 
             foreach cn of local colnames { 
                 local base = "`cn'" 
                 local colonpos = strpos("`cn'", ":") 
@@ -226,14 +223,24 @@ program define write_results_csv
             di as error "NOTE: no treatment coef for `m' -- skipped." 
             continue 
         } 
+ 
+        * Determine estimand for this row: use the passed-in value if given, 
+        * otherwise infer it from the model name so the combined table 
+        * (which mixes ATE and ATET models) still gets correct labels. 
+        local row_estimand "`estimand'" 
+        if "`row_estimand'" == "" { 
+            if strpos("`m'", "partial") > 0 local row_estimand "ATE" 
+            else if strpos("`m'", "int") > 0 local row_estimand "ATET" 
+            else if "`m'" == "rct_itt" local row_estimand "ITT" 
+        } 
+ 
         local pos : list posof "`tcoef_full'" in colnames 
         matrix b = e(b) 
         matrix V = e(V) 
         local beta = b[1,`pos'] 
         local se   = sqrt(V[`pos',`pos']) 
         local n    = e(N) 
-        file write fh "`m'," %9.4f (`beta') "," %9.4f (`se') "," %9.0f (`n') ",`estimand'" _n 
+        file write fh "`m'," %9.4f (`beta') "," %9.4f (`se') "," %9.0f (`n') ",`row_estimand'" _n 
     } 
     file close fh 
- 
 end 
