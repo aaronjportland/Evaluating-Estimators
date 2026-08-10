@@ -80,4 +80,4 @@ Uses Stata's `ddml`/`pystacked` to flexibly estimate nuisance functions and prod
  
 ## 8. Documentation (`Results/`) 
  
-Project report with a summary of the analysis and suggested next steps, plus supporting documents on the original 2018 experiment design. 
+Project report with a summary of the analysis and suggested next steps.
