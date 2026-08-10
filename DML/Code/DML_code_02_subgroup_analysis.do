@@ -13,6 +13,7 @@
 *   3. Run the high-competition subgroup. 
 *   4. Run the low-competition subgroup. 
 *   5. Run the matching subsample. 
+*   6. Write partial and interactive results to CSV
 *========================================================================= 
  
 // Step 1: Load the shared DML engine. 
@@ -43,9 +44,15 @@ foreach model in partial interactive {
     run_ddml, model(`model') outname(`prefix'match) /// 
         condition("appears_in_RAIS_2016==1 & number_employees_RAIS_2016>0 & number_employees_RAIS_2016<=10 & business_practices_sum_2018<=22 & treated_impact_evaluation_2017!=1") /// 
         label("Matching subsample") 
- 
 } 
 
+// 6. Write partial and interactive results to CSV immediately after estimation.
  
 
+write_results_csv, /// 
+    models("dml_partial_highcomp dml_partial_lowcomp dml_partial_match") /// 
+    csvfile("$out_dml/output_dml_partial_results_table.csv") estimand(ATE) 
  
+write_results_csv, /// 
+    models("dml_int_highcomp dml_int_lowcomp dml_int_match") /// 
+    csvfile("$out_dml/output_dml_interactive_results_table.csv") estimand(ATET) 
