@@ -35,7 +35,7 @@ foreach m of local partial_models {
 local int_models dml_int_full dml_int_highcomp dml_int_lowcomp dml_int_match 
 local avail_int 
 foreach m of local int_models { 
-    capture estimates use "$out_dml/`m'.ster" 
+    capture estimates use "$out_dml/`m'.ster"  
     if !_rc { 
         estimates store `m' 
         local avail_int `avail_int' `m' 
@@ -81,9 +81,4 @@ di "RCT ITT included:            " cond(`have_rct'==1, "yes", "no")
 di "" 
 di "Next step: run DML_code_04_comparison_plot.do to produce" 
 di "  Results/dml_method_comparison.csv (consumed by Results_combine_all.do)." 
-
- 
-
- 
-
  
