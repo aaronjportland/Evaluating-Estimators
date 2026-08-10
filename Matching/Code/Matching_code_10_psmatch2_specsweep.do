@@ -56,7 +56,7 @@ local opts2 neighbor(1) noreplacement common
 local opts3 neighbor(3) common 
 local opts4 neighbor(5) common 
 local opts5 neighbor(1) caliper(0.01) common 
-local opts6 radius caliper(0.01) common 
+local opts6 radius caliper(0.05) common 
 local opts7 kernel kerneltype(normal) bwidth(0.06) common 
 local opts8 llr bwidth(0.06) common 
 local nspecs : word count `labels' 
