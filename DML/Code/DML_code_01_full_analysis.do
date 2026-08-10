@@ -11,6 +11,7 @@
 *     prep_dml, run_ddml, write_results_csv). 
 *   2. Run the partial (ATE) model on the full sample. 
 *   3. Run the interactive (ATET) model on the full sample. 
+*   4. Write partial and interactive results to CSV
 *========================================================================= 
  
 // Step 1: Load the shared DML engine. 
@@ -24,6 +25,7 @@ run_ddml, model(partial) outname(dml_partial_full) label("Full sample (ATE)")
 prep_dml, model(interactive) 
 run_ddml, model(interactive) outname(dml_int_full) label("Full sample (ATET)") 
 
- 
-
- 
+// 4. Write partial and interactive results to CSV immediately after estimation. 
+write_results_csv, /// 
+    models("dml_partial_full dml_int_full") /// 
+    csvfile("$out_dml/output_dml_full_results_table.csv") 
