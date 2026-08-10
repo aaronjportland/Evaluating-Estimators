@@ -58,9 +58,6 @@ if "`avail_partial'" == "" & "`avail_int'" == "" {
 } 
  
 // Step 5: Write the partial, interactive, and combined results CSVs. 
-// The combined CSV (output_dml_method_comparison_table.csv) is the one 
-// consumed by DML_code_04, which adds the Pipeline column and exports to 
-// Results/dml_method_comparison.csv for Results_combine_all.do. 
 local rct_tok 
 if `have_rct' local rct_tok rct_itt 
 local partial_list  `rct_tok' `avail_partial' 
