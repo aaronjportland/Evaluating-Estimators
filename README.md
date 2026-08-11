@@ -74,8 +74,6 @@ Uses Stata's `ddml`/`pystacked` to flexibly estimate nuisance functions and prod
 2. `DML_code_04_comparison_plot.do` → `Results/dml_method_comparison.csv` 
 3. `Results_combine_all.do` → `Results/treatment_table.rtf/.tex`, `Results/all_methods_combined.csv`, `Results/all_methods_combined_plot.png` 
  
-> **Note:** `Results_combine_all.do` also reads `Results/treatment_table_original.csv` for the combined CSV. This file is not produced automatically — add `export delimited "Results/treatment_table_original.csv", replace` to the end of the original `Formatting_output_table.do` and run it once. 
- 
 --- 
  
 ## 8. Documentation (`Results/`) 
