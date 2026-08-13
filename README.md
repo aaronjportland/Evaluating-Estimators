@@ -58,7 +58,7 @@ Uses Stata's `ddml`/`pystacked` to flexibly estimate nuisance functions and prod
  
 - **`DML_code_00` — Shared Engine:** Central setup and estimation programs reused by all DML scripts. Handles both an ATE specification (partial model, multi-arm treatment) and an ATET specification (interactive model, binary treatment). Propensity-score diagnostics are only produced for the interactive model since they are not meaningful for the multi-arm partial model. 
 - **`DML_code_01` — Full-Sample Analysis:** Runs both specifications on the full sample. 
-- **`DML_code_02` — Subgroup Analysis:** Repeats both specifications for high-competition, low-competition, and matching-comparable subgroups. 
+- **`DML_code_02` — Subgroup Analysis:** Repeats both specifications for high-competition and low-competition subgroups.
 - **`DML_code_03` — Output Formatting:** Compiles all DML results and the RCT benchmark into summary CSVs. 
 - **`DML_code_04` — Comparison Plot:** Plots all DML estimates against the RCT benchmark and writes a combined output to `Results/`. 
  
